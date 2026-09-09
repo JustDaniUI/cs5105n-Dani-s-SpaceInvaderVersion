@@ -5,5 +5,12 @@
 [node name="Main" type="Node2D" unique_id=227938612]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1726484567]
-position = Vector2(2, -1)
+position = Vector2(547, 379)
 texture = ExtResource("1_ig7tw")
+
+[node name="Hello World!" type="Label" parent="." unique_id=1412074488]
+offset_left = 500.0
+offset_top = 280.0
+offset_right = 540.0
+offset_bottom = 303.0
+text = "Hello World!"
