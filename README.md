@@ -85,3 +85,70 @@ The console output below shows the successful `git push` operation to the
 ### Screenshot — Git Push
 
 ![Git Push](screenshots/console.png)
+
+---------------------------------------------------------
+
+# Activity 2 — Gameplay Mechanics & Game Feel
+
+## 7. Week 2 — Gameplay Mechanics & Game Feel
+
+### Objective
+
+This activity focused on implementing the core gameplay mechanics of the
+Space Invaders project and adding a game-feel element to make the gameplay
+more responsive.
+
+### Player Mechanics
+
+A `CharacterBody2D` was created for the player. The player was programmed
+to move left and right, jump, and interact with the floor using physics.
+
+### Player Controls
+
+| Key | Action |
+|---|---|
+| ← | Move Left |
+| → | Move Right |
+| ↑ | Jump |
+| Space | Shoot |
+
+### Shooting Mechanic
+
+A separate `Area2D` bullet scene was created with a `Sprite2D` and
+`CollisionShape2D`. The player can shoot bullets that travel upward.
+
+### Game Feel / Juice
+
+A squash-and-stretch effect was added when the player shoots. The player
+briefly becomes wider and shorter before returning to its normal scale,
+providing visual feedback when shooting.
+
+### Gameplay Test
+
+The following GIF demonstrates the player movement, jumping, shooting,
+and bullet movement during gameplay testing.
+
+![Gameplay Test](screenshots/gameplay.gif)
+
+### Development Evidence
+
+Additional screenshots document the coding and control implementation.
+
+![More Coding](screenshots/CODING.png)
+
+![Player Controls](screenshots/CONTROLS.png)
+
+### Week 2 Git Push
+
+The completed Week 2 implementation was committed and pushed to the
+GitHub repository.
+
+Commit message:
+
+`Week 2: core mechanic + juice`
+
+Commit:
+
+`c8d4024`
+
+![Week 2 Git Push](screenshots/WEEK2.png)
