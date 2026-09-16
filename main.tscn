@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://ci28jql1hbq1e"]
 
 [ext_resource type="Texture2D" uid="uid://dxv5lx6bxvgrc" path="res://icon.svg" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://bg2cw8ilp7vk8" path="res://player.tscn" id="2_0xm2m"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(1149.5, 117.5)
 
 [node name="Main" type="Node2D" unique_id=227938612]
 
@@ -14,3 +18,12 @@ offset_top = 280.0
 offset_right = 540.0
 offset_bottom = 303.0
 text = "Hello World!"
+
+[node name="Player" parent="." unique_id=1912362168 instance=ExtResource("2_0xm2m")]
+position = Vector2(280, 71)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=832947615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1591325336]
+position = Vector2(574, 589)
+shape = SubResource("RectangleShape2D_xrivr")
