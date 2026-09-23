@@ -1,0 +1,91 @@
+[gd_scene format=4 uid="uid://xmfb8pj3ev1c"]
+
+[ext_resource type="PackedScene" uid="uid://bg2cw8ilp7vk8" path="res://player.tscn" id="1_r40rm"]
+[ext_resource type="Texture2D" uid="uid://dxv5lx6bxvgrc" path="res://icon.svg" id="2_6q4t8"]
+[ext_resource type="PackedScene" uid="uid://bw584ko7pprqc" path="res://enemy.tscn" id="3_6q4t8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(1149.5, 117.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
+texture = ExtResource("2_6q4t8")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_13qdw"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_0xm2m")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(1000, 50)
+
+[node name="Level 2" type="Node2D" unique_id=227938612]
+
+[node name="Player" parent="." unique_id=1912362168 instance=ExtResource("1_r40rm")]
+position = Vector2(191, 324)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=832947615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1591325336]
+position = Vector2(574, 589)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="LevelTiles" type="TileMapLayer" parent="." unique_id=401301388]
+tile_map_data = PackedByteArray("AAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAP//AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP3/AQAAAAAAAAAAAPz/AQAAAAAAAAAIAAIAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAP//AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP3/AQAAAAAAAAAIAPz/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_13qdw")
+
+[node name="Goal" type="Area2D" parent="." unique_id=601053678]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1739602466]
+position = Vector2(574, -547)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="Enemy" parent="." unique_id=162770496 instance=ExtResource("3_6q4t8")]
+position = Vector2(784, 51)
+
+[node name="Enemy5" parent="." unique_id=1318589755 instance=ExtResource("3_6q4t8")]
+position = Vector2(654, 49)
+
+[node name="Enemy6" parent="." unique_id=2353341 instance=ExtResource("3_6q4t8")]
+position = Vector2(544, 128)
+
+[node name="Enemy7" parent="." unique_id=631570700 instance=ExtResource("3_6q4t8")]
+position = Vector2(430, 132)
+
+[node name="Enemy8" parent="." unique_id=843307625 instance=ExtResource("3_6q4t8")]
+position = Vector2(313, 49)
+
+[node name="Enemy10" parent="." unique_id=1548270940 instance=ExtResource("3_6q4t8")]
+position = Vector2(785, 135)
+
+[node name="Enemy9" parent="." unique_id=819836608 instance=ExtResource("3_6q4t8")]
+position = Vector2(656, 130)
+
+[node name="Enemy2" parent="." unique_id=1119428263 instance=ExtResource("3_6q4t8")]
+position = Vector2(428, 47)
+
+[node name="Enemy3" parent="." unique_id=1303945687 instance=ExtResource("3_6q4t8")]
+position = Vector2(315, 134)
+
+[node name="Enemy4" parent="." unique_id=2022293001 instance=ExtResource("3_6q4t8")]
+position = Vector2(531, 45)
+
+[node name="Label" type="Label" parent="." unique_id=552843904]
+offset_left = 149.0
+offset_top = 201.0
+offset_right = 280.0
+offset_bottom = 250.0
+text = "PRESS SPACEBAR
+TO SHOOT!"
+
+[node name="Label" type="Label" parent="Label" unique_id=589168070]
+layout_mode = 0
+offset_left = 684.0
+offset_top = -167.0
+offset_right = 859.0
+offset_bottom = -139.0
+text = "These are the enemies"
+
+[connection signal="body_entered" from="Goal" to="Player" method="_on_goal_body_entered"]

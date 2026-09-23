@@ -1,0 +1,84 @@
+[gd_scene format=4 uid="uid://dlg6we73hyn0a"]
+
+[ext_resource type="PackedScene" uid="uid://bg2cw8ilp7vk8" path="res://player.tscn" id="1_dopym"]
+[ext_resource type="Texture2D" uid="uid://dxv5lx6bxvgrc" path="res://icon.svg" id="2_ootpb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrivr"]
+size = Vector2(1149.5, 117.5)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0xm2m"]
+texture = ExtResource("2_ootpb")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)
+
+[sub_resource type="TileSet" id="TileSet_13qdw"]
+tile_size = Vector2i(128, 128)
+physics_layer_0/collision_layer = 1
+sources/1 = SubResource("TileSetAtlasSource_0xm2m")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_13qdw"]
+size = Vector2(50, 200)
+
+[node name="Level 1" type="Node2D" unique_id=227938612]
+
+[node name="Player" parent="." unique_id=1912362168 instance=ExtResource("1_dopym")]
+position = Vector2(177, 365)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=832947615]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1591325336]
+position = Vector2(574, 589)
+shape = SubResource("RectangleShape2D_xrivr")
+
+[node name="LevelTiles" type="TileMapLayer" parent="." unique_id=401301388]
+position = Vector2(-14, 14)
+tile_map_data = PackedByteArray("AAAAAAMAAQAAAAAAAAABAAMAAQAAAAAAAAACAAMAAQAAAAAAAAADAAMAAQAAAAAAAAAEAAMAAQAAAAAAAAAFAAMAAQAAAAAAAAAGAAMAAQAAAAAAAAAHAAMAAQAAAAAAAAAIAAMAAQAAAAAAAAAAAAIAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAP//AQAAAAAAAAAAAP7/AQAAAAAAAAAAAP3/AQAAAAAAAAAAAPz/AQAAAAAAAAAIAAIAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAAAAQAAAAAAAAAIAP//AQAAAAAAAAAIAP7/AQAAAAAAAAAIAP3/AQAAAAAAAAAIAPz/AQAAAAAAAAA=")
+tile_set = SubResource("TileSet_13qdw")
+
+[node name="Goal" type="Area2D" parent="." unique_id=601053678]
+position = Vector2(1000, 500)
+
+[node name="Sprite2D" type="Sprite2D" parent="Goal" unique_id=723892535]
+position = Vector2(-39.999977, -207)
+scale = Vector2(0.39843786, 1.5468751)
+texture = ExtResource("2_ootpb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Goal" unique_id=1739602466]
+position = Vector2(-41, -208)
+shape = SubResource("RectangleShape2D_13qdw")
+
+[node name="Label" type="Label" parent="." unique_id=1180059278]
+offset_left = 143.0
+offset_top = 19.0
+offset_right = 489.0
+offset_bottom = 42.0
+text = "USE LEFT AND RIGHT ARROW KEYS TO MOVE!"
+
+[node name="Label" type="Label" parent="Label" unique_id=1128135191]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 28.0
+offset_right = 345.0
+offset_bottom = 51.0
+text = "SPACE BAR TO SHOOT!"
+
+[node name="Label" type="Label" parent="Label/Label" unique_id=793929985]
+layout_mode = 0
+offset_left = 509.0
+offset_top = -23.0
+offset_right = 855.0
+offset_bottom = 26.0
+text = "Game is currently for a draft!
+More details will be added soon!"
+
+[node name="Label" type="Label" parent="Label/Label/Label" unique_id=550622283]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 126.0
+offset_right = 335.0
+offset_bottom = 175.0
+text = "There will be gates as a placeholder
+for the levels as of  now"
+
+[connection signal="body_entered" from="Goal" to="Player" method="_on_goal_body_entered"]
